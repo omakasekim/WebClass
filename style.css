@@ -1,0 +1,48 @@
+header {
+  background-color: black;
+  color: white;
+  font-size: 30px;
+  font-family:'Times New Roman', Times, serif;
+  padding: 50px;
+  text-align: center;
+}
+#content {
+  margin-top: 1px;
+  display: flex;
+}
+/*The hashtag '#' is an id selector used to target a single specific element with a unique id*/
+
+#selection {
+  height: 800px;
+  border: 1px solid black;
+  width: 30%;
+}
+
+select {
+  width: 80%;
+}
+
+img {
+  width: 100%;
+}
+
+#description {
+  width: 70%;
+  height: 800px;
+  border: 1px solid black;
+
+}
+
+#description > div{
+  display: none;
+}
+/*
+> Means the direct child of a selector, so
+
+li > a will ONLY match an <a> which is directly inside an <li> for example.
+
+If the html was <li><span><a> the <a> would not be matched.
+
+Removing the > will match any <a> nested inside an <li>, irrespective of other things around it, so li a would match the <a> in
+
+<li><a> but also in <li><span><a>, for example.*/
