@@ -1,39 +1,60 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: "Lato", sans-serif;
-  font-size: 20pt;
-  font-weight: normal;
-  background: lightblue; /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(
-    -90deg,
-    lightblue,
-    black
-  ); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(
-    -90deg,
-    lightblue,
-    black
-  ); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(
-    -90deg,
-    lightblue,
-    black
-  ); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(-90deg, lightblue, black); /* Standard syntax */
+/* <- Demo Stuff Start */
+
+body{
+  font-family: 'Montserrat', sans-serif;
+  margin:0;
 }
 
-.main {
-  margin: 100px auto;
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-wrap: wrap;
+  width: 80vw;
+  margin: 0 auto;
+  min-height: 100vh;
+}
+.btn {
+  flex: 1 1 auto;
+  margin: 10px;
+  padding: 30px;
   text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+ /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+ }
+
+/* Demo Stuff End -> */
+
+/* <- Magic Stuff Start */
+
+.btn:hover {
+  background-position: right center; /* change the direction of the change here */
 }
 
-button {
-  padding: 20px;
-  background: transparent;
-  text-shadow: 1px 1px 1px #202020;
-  font-family: "Lato", sans-serif;
-  font-size: 18pt;
-  border: 1px solid lightblue;
-  color: lightblue;
+.btn-1 {
+  background-image: linear-gradient(to right, #f6d365 0%, #fda085 51%, #f6d365 100%);
 }
+
+.btn-2 {
+  background-image: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100%);
+}
+
+.btn-3 {
+  background-image: linear-gradient(to right, #84fab0 0%, #8fd3f4 51%, #84fab0 100%);
+}
+
+.btn-4 {
+  background-image: linear-gradient(to right, #a1c4fd 0%, #c2e9fb 51%, #a1c4fd 100%);
+}
+
+.btn-5 {
+  background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 51%, #ffecd2 100%);
+}
+
+/* Magic Stuff End -> */
