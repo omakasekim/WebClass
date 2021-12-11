@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <style>
+        #box{
+            width:300px;
+            height:300px;
+        }
+    </style>
+    <script>
+        x=0;
+        y=0;
+
+        function shift(){
+            if(x<900 && y==0){ 
+                x=x+100;
+                                                           
+                document.getElementById('box').style.margin=y+'px 0px 0px '+x+'px';
+            }
+            else if(y<300 && x==900){
+                y+=100;
+                document.getElementById('box').style.margin=y+'px 0px 0px '+x+'px';
+            }
+            else if(x>0 && y==300){
+                x-=100;
+                document.getElementById('box').style.margin=y+'px 0px 0px '+x+'px';
+            }
+            else{
+                y-=100;
+                document.getElementById('box').style.margin=y+'px 0px 0px '+x+'px';
+            }
+
+        }
+    </script>
+</head>
+    
+<body>
+    <button onclick="shift()">밀기</button><br>
+    <img src="dino1.png" id='box'>
+</body>
+</html>
