@@ -1,0 +1,67 @@
+body{
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: lightsalmon;
+}
+.snowmanContainer{
+    width: 300px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+.snowCap{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 110px;
+    border-bottom: 8px solid black;
+}
+.blackRec{
+    width: 70px;
+    height: 10px;
+    background-color: black;
+}
+.greyRec{
+    width: 70px;
+    height: 15px;
+    background-color: lightgray;
+}
+.snowTop{
+    width: 120px;
+    height: 80px;
+    border-radius: 50px;
+    background-color: white;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-evenly;
+}
+.eye{
+    margin-top: 30px;
+    width: 15px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: black;
+}
+.snowBottom{
+    width: 170px;
+    height: 150px;
+    border-radius: 75px;
+    background-color: white;
+}
+.snowScarf{
+    position: absolute;
+    bottom: 135px;
+    width: 120px;
+    height: 20px;
+    border-radius: 100px;
+    border: 5px solid lightsalmon;
+    background-color: tomato;
+}
