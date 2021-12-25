@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <link rel="stylesheet" href="snowflake.css">
+   </head>
+   <body>
+      <div id="loader"></div>
+      <div id="wrapper">
+         <img src="https://dl.dropbox.com/s/3t4z2nijxj2nos6/snowflake-image.svg?raw=1" />
+         <h3>Click Anywhere On The Screen</h3>
+      </div>
+      <script>
+          window.addEventListener("load", function () {
+         document.getElementById("loader").style.display = "none";
+              
+         document.getElementById("wrapper").style.display = "block";
+         });
+          
+         document.addEventListener("click", (e) => {
+         var snowflake = document.createElement("span");
+         snowflake.classList.add("snowflake");
+         snowflake.style.left = e.offsetX + "px";
+         snowflake.style.top = e.offsetY + "px";
+         var size = Math.random() * (90 - 15 + 1) + 15;
+         snowflake.style.width = size + "px";
+         snowflake.style.height = size + "px";
+         document.body.appendChild(snowflake);
+         setTimeout(() => {
+           snowflake.remove();
+         }, 1000);
+         });
+      </script>
+   </body>
+</html>
