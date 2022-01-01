@@ -1,0 +1,50 @@
+<html lang="en">
+  <head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link rel="stylesheet" href="google.css" />
+    <title>Ggoogle</title>
+
+  </head>
+  <body>
+    <!-- Header Starts -->
+    <div class="header">
+      
+      <div class="header__right">
+        <a href="https://mail.google.com">Gmail</a>
+        <a href="https://images.google.com">Images</a>
+        <span class="material-icons header__apps"> apps </span>
+        <span class="material-icons"> account_circle </span>
+      </div>
+    </div>
+    <!-- Header Ends -->
+
+    <!-- Main Body Starts -->
+    <div class="mainBody">
+      <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"/>
+
+      <!-- Search Starts -->
+      <div class="search">
+        <div class="search__input">
+          <span class="material-icons"> search </span>
+          <input id = "userInput" type="text" />
+          <span class="material-icons"> mic </span>
+        </div>
+
+        <div class="search__buttons">
+          <button onclick="Search()">Google Search</button>
+          <button>I'm Feeling Lucky</button>
+        </div>
+      </div>
+      <!-- Search Ends -->
+      <script>
+          function Search(){
+            let query = document.getElementById('userInput').value;
+            let link = "https://www.google.com/search?q=" + query;
+            //location.href = link;
+            window.open(link,'_blank');
+          }
+      </script>
+      
+    <!-- Main Body Ends -->
+  </body>
+</html>
