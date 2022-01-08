@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            button{
+                width: 100px;
+                height:100px;
+            }
+            input{
+                width: 300px;
+                height: 100px;
+                font-size: 80px;
+            }
+            p{
+                font-size: 80px;
+            }
+        </style>
+    </head>
+    <body>
+        <form id="myForm">
+            <input type="text" id="userInput">
+            <button type="button" onclick="calculate()">Enter</button>
+        </form>
+        <p id="output"></p>
+
+        <script>
+            function calculate(){
+                document.getElementById('output').innerHTML =
+                eval(document.getElementById('userInput').value);
+
+                document.getElementById('myForm').reset();
+            }
+        </script>
+    </body>
+</html> 
