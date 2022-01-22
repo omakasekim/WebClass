@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <style>
+        
+        body{
+            padding-bottom: 70px;
+            background-color: black;
+            color:green;
+        }
+        hr{
+            background-color: green;
+            border-color: green;
+            width:1700px;
+        }
+        a{
+            margin-left: 40px;
+        }
+        #footer{
+            position: fixed;
+            bottom:0px;
+            height:70px;
+            background-color: black;
+            z-index: 1;
+        }
+        
+    </style>
+    <script>
+        window.addEventListener('keydown',function(e){
+            window.scrollTo(0,document.body.scrollHeight);
+            if(e.key=="Backspace"){
+                str=document.getElementById('typing_box').innerHTML;
+                str=str.slice(0,str.length-1);
+                document.getElementById('typing_box').innerHTML=str;
+            }
+            else if(e.key=="Enter"){
+                document.getElementById('typing_box').innerHTML+="<br>";
+            }
+            else{
+                document.getElementById('typing_box').innerHTML+=e.key; 
+            }
+        });
+        a=0;
+        function blink(){
+            
+            if (a%2==0){
+                document.getElementById("bar").style.visibility="visible";
+            }
+            else{
+                document.getElementById("bar").style.visibility="hidden";    
+            }
+            a+=1;
+        }
+        setInterval(blink,500); // 1000ms = 1s
+
+    </script>
+</head>
+<body>
+   
+    <label id="typing_box"></label><label id="bar">|</label>
+    <div id="footer">
+        <hr>
+        <a>Setting</a>
+        <a>Help</a>
+        <a>About</a>
+    </div>
+</body>
+</html>
