@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      div {
+        position: absolute;
+      }
+      #box1 {
+        width: 100px;
+        height: 100px;
+        background-color: lightseagreen;
+        visibility: hidden;
+      }
+      #box2 {
+        width: 150px;
+        height: 150px;
+        background-color: aqua;
+        visibility: hidden;
+      }
+      #box3 {
+        width: 200px;
+        height: 200px;
+        background-color: blueviolet;
+        visibility: hidden;
+      }
+      #black {
+        width: 200px;
+        height: 140px;
+        color: white;
+        background-color: black;
+        right: 0px;
+        font-size: 40px;
+      }
+      #start {
+        width: 500px;
+        height: 150px;
+        background-color: peachpuff;
+        font-size: 30px;
+        margin-left: 380px;
+        margin-top: 100px;
+        padding-top: 100px;
+        text-align: center;
+      }
+    </style>
+    <script>
+      score = 0;
+      window.onload = function () {
+        box1 = document.getElementById("box1");
+        box2 = document.getElementById("box2");
+        box3 = document.getElementById("box3");
+        start_button = document.getElementById("start");
+
+        start_button.addEventListener("click", (event) => {
+          box1.style.visibility = "visible";
+          box2.style.visibility = "visible";
+          box3.style.visibility = "visible";
+          start_button.style.visibility = "hidden";
+          setInterval(move, 900);
+        });
+        box1.addEventListener("click", (event) => {
+          box1.style.background = "red";
+          score += 100;
+          document.getElementById("score").innerHTML = score;
+        });
+        box2.addEventListener("click", (event) => {
+          box2.style.background = "red";
+          score += 50;
+          document.getElementById("score").innerHTML = score;
+        });
+        box3.addEventListener("click", (event) => {
+          box3.style.background = "red";
+          score += 30;
+          document.getElementById("score").innerHTML = score;
+        });
+      };
+      time = 20;
+      function move() {
+        for (i = 1; i < 4; i++) {
+          x = Math.floor(Math.random() * 1200);
+          y = Math.floor(Math.random() * 620);
+          document.getElementById("box" + i).style.margin =
+            y + "px 0px 0px " + x + "px";
+        }
+
+        box1.style.background = "lightseagreen";
+        box2.style.background = "aqua";
+        box3.style.background = "blueviolet";
+      }
+      var timeleft = 20;
+      var downloadTimer = setInterval(function () {
+        if (timeleft <= 0) {
+          clearInterval(downloadTimer);
+          document.getElementById("time").innerHTML = "Finished";
+          alert("Game over!");
+        } else {
+          document.getElementById("time").innerHTML =
+            timeleft + " seconds remaining";
+        }
+        timeleft -= 1;
+      }, 1000);
+    </script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="start">누르면 게임 시작 !</div>
+    <div id="box1"></div>
+    <div id="box2"></div>
+    <div id="box3"></div>
+    <div id="black">
+      <label id="score">0</label><br /><label id="time">20</label>
+    </div>
+
+  </body>
+</html>
