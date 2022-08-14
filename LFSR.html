@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    
+    <style>
+      .container {
+        display: flex;
+        flex-flow: row;
+        justify-content: center;
+      }
+      .controller {
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .canvas {
+        position: absolute;
+        top: 20%;
+        left: 45%;
+        font-size: 3rem;
+        line-height: 0;
+      }
+      .container > div {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: -3px;
+        font-size: 3em;
+      }
+
+      .bit {
+        border: 3px solid black;
+        margin-left: 0px;
+      }
+
+      .input,
+      .output {
+        margin: 3px;
+      }
+
+      .input {
+        padding-right: 3px;
+      }
+
+      .input > .value {
+        opacity: 0;
+      }
+
+      .output > .value {
+        opacity: 0.5;
+      }
+
+      .shift {
+        transition: margin-left 0.5s;
+        margin-left: 106px;
+      }
+
+      .last-bit .shift {
+        transition: all 0.5s;
+        opacity: 0.5;
+      }
+
+      .input > .shift {
+        transition: all 0.5s;
+        opacity: 1;
+      }
+
+      .output > .shift {
+        transition: all 0.5s;
+        opacity: 0;
+      }
+
+      .tap {
+        background-color: lightgray;
+      }
+    </style>
+    <script src="https://releases.jquery.com/git/jquery-git.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="input"><span class="value"></span></div>
+      <div class="bit"><span class="value"></span></div>
+      <div class="bit"><span class="value"></span></div>
+      <div class="bit tap"><span class="value"></span></div>
+      <div class="bit tap last-bit"><span class="value"></span></div>
+      <div class="output"><span class="value"></span></div>
+    </div>
+    <br /><br />
+    <div class="controller">
+      Value: <span id="value"></span><br />
+      <button class="btn" onclick="Shift()">Shift</button>
+      <button class="btn" onclick="Run()">Run</button>
+      <button onclick="Stop()">Stop</button>
+    </div>
+    <script>
+      var state = [false, false, false, true];
+      var outBit = true;
+
+      var running = 0;
+
+      function Xor() {
+        return (state[2] ^ state[3]) == 1;
+      }
+
+      function Value() {
+        var x = 0;
+        for (var i = 0; i < state.length; i++) {
+          if (state[state.length - 1 - i]) x += Math.pow(2, i);
+        }
+        return x;
+      }
+
+      function UpdateView() {
+        if (!running) $(".btn").prop("disabled", false);
+        $(".container > div > .value").removeClass("shift");
+        $(".bit").each(function (i, e) {
+          $(e)
+            .find(".value")
+            .text(state[i] ? "1" : "0");
+        });
+        $(".input .value").text(Xor() ? "1" : "0");
+        $(".output .value").text(outBit ? "1" : "0");
+        $("#value").text(Value());
+      }
+
+      function Shift() {
+        $(".btn").prop("disabled", true);
+        $(".container > div > .value").addClass("shift");
+        setTimeout(function () {
+          var shiftIn = Xor();
+          outBit = state[state.length - 1];
+          for (var i = state.length - 1; i >= 1; i--) {
+            state[i] = state[i - 1];
+          }
+          state[0] = shiftIn;
+          UpdateView();
+        }, 501);
+      }
+
+      function Run() {
+        running = setInterval(Shift, 600);
+      }
+
+      function Stop() {
+        clearInterval(running);
+        running = 0;
+        setTimeout(UpdateView, 600);
+      }
+
+      $(".bit").each(function (i, e) {
+        $(e).css("z-index", state.length - i);
+      });
+
+      UpdateView();
+    </script>
+  </body>
+</html>
